@@ -47,13 +47,20 @@
             pecas[pos.Linha, pos.Coluna] = null;
 
             return aux;
-            
         }
 
         public bool ExistePeca(Posicao pos)
         {
             ValidarPosicao(pos);
             return Peca(pos) != null;
+        }
+
+        public void ValidarPosicao(Posicao pos)
+        {
+            if (!PosicaoValida(pos))
+            {
+                throw new TabuleiroException("Posição inválida!");
+            }
         }
 
         public bool PosicaoValida(Posicao pos)
@@ -64,14 +71,6 @@
             }
 
             return true;
-        }
-
-        public void ValidarPosicao(Posicao pos)
-        {
-            if (!PosicaoValida(pos))
-            {
-                throw new TabuleiroException("Posição inválida!");
-            }
         }
     }
 }
